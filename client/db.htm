@@ -1,17 +1,19 @@
 <body>
     <script>
-        const openRequest = indexedDB.open('cangaceiro', 2)
+        const openRequest = indexedDB.open('cangaceiro', 4)
 
         let connection = null;
 
-        const storeName = 'negociacao'
+        const storeName = 'negociacoes'
 
         openRequest.onerror = (e) => {
             console.log('houve um erro', e)
         }
 
-        openRequest.onsuccess = () => {
+        openRequest.onsuccess = e => {
             console.log('Sucesso')
+
+            connection = e.target.result;
         }
 
         openRequest.onupgradeneeded = e => {
@@ -23,7 +25,53 @@
             
             connection.createObjectStore(storeName, {autoIncrement: true})
             console.log('passei por aqui')
-            
+        }
+
+        function adiciona() {
+            const negociacao = new Negociacao(new Date(), 200, 1)
+
+            const request = connection
+            .transaction([storeName], 'readwrite')
+            .objectStore(storeName)
+            .add(negociacao)
+
+            request.onerror = e => {
+                console.log('error', e)
+            }
+
+            request.success = e => {
+                console.log('event', e)
+            }
+        }
+
+        function lista() {
+            const negociacoes = []
+
+            const cursor = connection
+            .transaction([storeName], 'readwrite')
+            .objectStore(storeName)
+            .openCursor()
+
+            cursor.onsuccess = e => {
+                const current = e.target.result
+
+                if(current) {
+                    const value = current.value
+                    const negociacao = new Negociacao(value._data, value._valor, value._quantidade)
+
+                    negociacoes.push(negociacao)
+
+                    current.continue()
+                } else {
+                    console.log('lista', negociacoes)
+                }
+            }
+
+            cursor.onerror = e => {
+                console.log('erro', e)
+            }
         }
     </script>
+
+    <script src="./app/domain/Negociacao.js"></script>
 </body>
