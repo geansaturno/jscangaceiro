@@ -1,0 +1,29 @@
+<body>
+    <script>
+        const openRequest = indexedDB.open('cangaceiro', 2)
+
+        let connection = null;
+
+        const storeName = 'negociacao'
+
+        openRequest.onerror = (e) => {
+            console.log('houve um erro', e)
+        }
+
+        openRequest.onsuccess = () => {
+            console.log('Sucesso')
+        }
+
+        openRequest.onupgradeneeded = e => {
+            
+            connection = e.target.result;
+            
+            if(connection.objectStoreNames.contains(storeName))
+                connection.deleteObjectStore(storeName)
+            
+            connection.createObjectStore(storeName, {autoIncrement: true})
+            console.log('passei por aqui')
+            
+        }
+    </script>
+</body>

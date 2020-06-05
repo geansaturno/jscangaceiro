@@ -10,12 +10,14 @@
 <body class="container">
     
     <h1 class="text-center">Negociações</h1>
-    
+
+    <div id="alertas"></div>
+
     <form class="form">
         
         <div class="form-group">
             <label for="data">Data</label>
-            <input type="date" id="data" class="form-control" required autofocus/>        
+            <input type="text" id="data" class="form-control" required autofocus/>        
         </div>    
         
         <div class="form-group">
@@ -42,22 +44,24 @@
     <br>
     <br>
     
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>DATA</th>
-                <th>QUANTIDADE</th>
-                <th>VALOR</th>
-                <th>VOLUME</th>
-            </tr>
-        </thead>
-        
-        <tbody>
-        </tbody>
-        
-        <tfoot>
-        </tfoot>
-    </table>
+    <div id="tabela-demonstrativa"></div>
+
+    <script src="./app/utils/ApplicationException.js"></script>
+    <script src="./app/ui/converters/DataInvalidaException.js"></script>
+    <script src="./app/helpers/converters/DateConverter.js"></script>
+    <script src="./app/utils/HttpRequester.js"></script>
+    <script src="./app/service/NegociacaoService.js"></script>
+    <script src="./app/domain/Negociacao.js"></script>
+    <script src="./app/domain/Negociacoes.js"></script>
+    <script src="./app/utils/ProxyFactory.js"></script>
+    <script src="./app/utils/Binder.js"></script>
+    <script src="./app/ui/models/Menssagem.js"/></script>
+    <script src="./app/ui/views/View.js"></script>
+    <script src="./app/ui/views/NegociacaoView.js"/></script>
+    <script src="./app/ui/views/MenssagemView.js"/></script>
+
+    <script src="./app/controller/NegociacaoController.js"></script>
+    <script src="./app/app.js"></script>
     
 </body>
 </html>
