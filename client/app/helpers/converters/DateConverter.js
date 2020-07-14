@@ -1,8 +1,4 @@
-class DateConverter {
-  constructor () {
-    throw new Error('Static Class')
-  }
-
+class DateConverter extends AbstractClass{
   /**
    *
    * @param {String} dateString String para data
