@@ -20,6 +20,17 @@ class NegociacaoController {
       new MensagemView('#alertas'),
       'novaMenssagem'
     )
+
+    this._init()
+  }
+
+  _init() {
+    DaoFactory.getNegociacaoDao()
+    .then(negociacaoDao => negociacaoDao.lista())
+    .then(negociacoes => negociacoes.forEach(negociacao => {
+      this._negociacoes.adiciona(negociacao)
+    }))
+    .catch(e => this._menssagem.texto = e)
   }
 
   /**
@@ -36,9 +47,15 @@ class NegociacaoController {
         this._inputQuantidade.value
       )
 
-      this.limpaCampos()
-      this._negociacoes.adiciona(negociacao)
-      this._menssagem.novaMenssagem('Negociação inserida')
+      DaoFactory.getNegociacaoDao()
+      .then(negociacaoDao => negociacaoDao.adiciona(negociacao))
+      .then( () => {
+        this._negociacoes.adiciona(negociacao)
+        this._menssagem.novaMenssagem('Negociação inserida')
+        this.limpaCampos()
+      })
+      .catch(e => this._menssagem.texto = e)
+
     } catch (error) {
       console.error(error.stack)
 
