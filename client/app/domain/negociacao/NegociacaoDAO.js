@@ -43,4 +43,18 @@ class NegociacaoDAO {
             }
         })
     }
+
+    apagar() {
+        return new Promise((resolve, reject) => {
+            const request = this.connection.transaction(this._store, 'readwrite').objectStore(this._store).clear()
+
+            request.onsuccess = e => {
+                resolve()
+            }
+
+            request.onerror = e => {
+                reject(e)
+            }
+        })
+    }
 }

@@ -76,8 +76,13 @@ class NegociacaoController {
   }
 
   apaga () {
-    this._negociacoes.esvazia()
-    this._menssagem.novaMenssagem('Negociações removidas com sucesso')
+    DaoFactory.getNegociacaoDao()
+    .then(negociacaoDao => negociacaoDao.apagar())
+    .then(() => {
+      this._negociacoes.esvazia()
+      this._menssagem.novaMenssagem('Negociações removidas com sucesso')
+    })
+    .catch(error => this._menssagem.texto = error)
   }
 
   async importarNegociacoes () {
