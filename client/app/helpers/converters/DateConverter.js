@@ -1,4 +1,6 @@
-class DateConverter extends AbstractClass{
+import AbstractClass from '../../utils/AbstractClass'
+
+export default class DateConverter extends AbstractClass {
   /**
    *
    * @param {String} dateString String para data

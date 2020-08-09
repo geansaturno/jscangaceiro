@@ -1,4 +1,4 @@
-class MensagemView extends View {
+export default class MenssagemView extends View {
   /**
    * @param {Menssagem} menssage
    */

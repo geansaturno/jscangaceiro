@@ -1,3 +1,5 @@
+import NegociacaoController from "./controller/NegociacaoController";
+
 const $ = document.querySelector.bind(document)
 const negociacaoController = new NegociacaoController()
 

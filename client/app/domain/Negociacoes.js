@@ -1,4 +1,4 @@
-class Negociacoes {
+export default class Negociacoes {
     constructor() {
         this._negociacoes = []
         Object.freeze(this)

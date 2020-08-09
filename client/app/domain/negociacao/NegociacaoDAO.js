@@ -1,4 +1,6 @@
-class NegociacaoDAO {
+import Negociacao from '../Negociacao'
+
+export default class NegociacaoDAO {
     /**
      * 
      * @param {IDBDatabase} connection 

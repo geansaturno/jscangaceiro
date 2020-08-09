@@ -1,4 +1,4 @@
-class View {
+export default class View {
 
     /**
      * @param {String} selector Eelemento que a view será montada

@@ -1,4 +1,6 @@
-class Binder {
+import ProxyFactory from './ProxyFactory'
+
+export default class Binder {
   /**
    * @param {Object} model Model a ser atualizado
    * @param {View} view Instancia da view para atualização

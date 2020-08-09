@@ -1,4 +1,12 @@
-class NegociacaoController {
+import NegociacaoService from '../service/NegociacaoService'
+import Binder from '../utils/Binder'
+import Negociacoes from '../domain/Negociacoes'
+import NegociacaoView from '../ui/views/NegociacaoView'
+import Menssagem from '../ui/models/Menssagem'
+import MenssagemView from '../ui/views/MenssagemView'
+import DaoFactory from '../utils/DaoFactory'
+
+export default class NegociacaoController {
   constructor () {
     const $ = document.querySelector.bind(document)
 
@@ -17,7 +25,7 @@ class NegociacaoController {
 
     this._menssagem = new Binder(
       new Menssagem(),
-      new MensagemView('#alertas'),
+      new MenssagemView('#alertas'),
       'novaMenssagem'
     )
 

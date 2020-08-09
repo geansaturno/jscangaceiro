@@ -1,4 +1,4 @@
-class HttpRequester {
+export default class HttpRequester {
   get (url) {
     return new Promise((resolve, reject) => {
       const xht = new XMLHttpRequest()

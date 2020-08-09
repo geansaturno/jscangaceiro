@@ -1,4 +1,6 @@
-class NegociacaoView extends View {
+import DateConverter from '../../helpers/converters/DateConverter'
+
+export default class NegociacaoView extends View {
   /**
    * @param {Negociacoes} negociacoes
    */

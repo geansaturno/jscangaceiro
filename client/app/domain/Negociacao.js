@@ -1,4 +1,4 @@
-class Negociacao {
+export default class Negociacao {
   constructor (_data, _valor, _quantidade) {
     Object.assign(this, { _valor, _quantidade })
     this._data = new Date(_data.getTime())

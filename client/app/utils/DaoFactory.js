@@ -1,4 +1,7 @@
-class DaoFactory extends AbstractClass {
+import AbstractClass from './AbstractClass'
+import NegociacaoDAO from '../domain/negociacao/NegociacaoDAO'
+
+export default class DaoFactory extends AbstractClass {
 
     /**
      * @returns {NegociacaoDao}

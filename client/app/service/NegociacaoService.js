@@ -1,4 +1,7 @@
-class NegociacaoService {
+import HttpRequester from '../utils/HttpRequester'
+import Negociacao from '../domain/Negociacao'
+
+export default class NegociacaoService {
   constructor () {
     this._http = new HttpRequester()
   }

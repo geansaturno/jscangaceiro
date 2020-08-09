@@ -46,7 +46,13 @@
     
     <div id="tabela-demonstrativa"></div>
 
-    <script src="./app/utils/AbstractClass.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script>
+        System.import('./app/app.js')
+        .catch(err => console.log('error', err))
+    </script>
+
+    <!-- <script src="./app/utils/AbstractClass.js"></script>
     <script src="./app/utils/ApplicationException.js"></script>
     <script src="./app/utils/Binder.js"></script>
     <script src="./app/utils/DaoFactory.js"></script>
@@ -65,7 +71,7 @@
     <script src="./app/ui/views/MenssagemView.js"/></script>
 
     <script src="./app/controller/NegociacaoController.js"></script>
-    <script src="./app/app.js"></script>
+    <script src="./app/app.js"></script> -->
     
 </body>
 </html>
